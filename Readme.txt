@@ -1,29 +1,12 @@
-This archive contains *basic* implementations of the following algorithms:
+Lempel-Ziv algorithms (LZ77):
 
-/*
-(1)  Run-Length Encoding (RLE) (gtrle32.c and gtrle35.c);
-(2)  Shannon-Fano Coding (gtsf.c and gtsfd.c);
-(3)  Static Huffman Coding (gthc.c and gthd.c);
-(4)  Dynamic Huffman coding-Algorithm FGK (fgkc.c and fgkd.c);
-(5)  Dynamic Huffman coding II-Algorithm Vitter (vitc.c and vitd.c);
-(6)  Run-Length Transform (RLT, a zero-order MTF) (gtrlt.c);
-(7)  Move-To-Front Coding (MTF) (gtmtf.c);
-(8)  Burrows-Wheeler Transform (BWT) (gtbwt5.c and gtbwtd5.c);
-*/
+(1)  lzh.c and lzhd.c       [2-byte hash];
+(2)  lzhh.c and lzhhx.c     [2-byte hash plus Huffman] );
+(3)  lzuf22.c and lzufd22.c [LZ77 + Variable-Length Codes];
+(4)  lzuf62.c and lzufd62.c [lzuf22 not dependent on ftell(), and works on bigger files];
+(5)  lzuf622.c [single file coder/decoder]:
 
-(9)  Lempel-Ziv algorithm (LZ77) (
-	gtlz772.c gtlz772d.c   [basic LZ77/LZSS implementation];
-	gtlz77hc.c gtlz77hd.c  [basic LZ77/LZSS + Huffman];
-	lzh.c and lzhd.c       [2-byte hash];
-	lzhh.c and lzhhx.c     [2-byte hash plus Huffman] );
-	lzuf22.c and lzufd22.c [LZ77 + Variable-Length Codes];
-	lzuf62.c and lzufd62.c [lzuf22 not dependent on ftell(), and works on bigger files];
-
-/* (10) Lempel-Ziv-Welch (LZW) (
-	gtlzw91.c and gtlzw91d.c   [using a TST];
-	lzwh.c and lzwhd.c         [using LZC hashing];
-	lzwgt.c and lzwgtd.c       [using a Binary Search Tree] ).
-*/
+In my tests, "lzuf622 -c17 -f2" is a little better than LZ4 high compression ("lz4 -9") in compression ratio at about the same compression speed on enwik8 and enwik9. That's testing only the 4 most recent offsets of the same hash. "Lzop -1" and "lzop -9" are better than "lz4 -1" and "lz4 -9" respectively but "lzop -9" is slower. "Lzuf622 -c17 -f3" is better than "lzop -9" but both lz4 and lzop decode way faster.
 
 Notes:
 
