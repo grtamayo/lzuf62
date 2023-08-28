@@ -1,4 +1,4 @@
-Lempel-Ziv algorithms (LZ77):
+Lempel-Ziv algorithms (LZ77/LZSS):
 
 (1)  lzh.c and lzhd.c       [2-byte hash];
 (2)  lzhh.c and lzhhx.c     [2-byte hash plus Huffman] );
