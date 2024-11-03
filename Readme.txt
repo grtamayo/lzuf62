@@ -10,5 +10,5 @@ Notes:
 
 For personal, academic, and research purposes only. Freely distributable.
 
--- Gerald Tamayo, BSIE(Mapua I.T.)
-   Philippines
+Gerald Tamayo, BSIE (Mapua I.T.)
+Philippines
